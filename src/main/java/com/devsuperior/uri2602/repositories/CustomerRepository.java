@@ -12,7 +12,7 @@ public interface CustomerRepository extends JpaRepository<Customer, Long> {
 	
 	@Query(nativeQuery = true, value = "SELECT name "
 			+ "FROM customers "
-			+ "WHERE state = :state") //[state] --> recebido pelo argumento do metodo
+			+ "WHERE UPPER(state) = UPPER(:state)") //[state] --> recebido pelo argumento do metodo. utilizado Uppercase na consulta 
 	List<CustomerMinProjection> serch1(String state);
 
 }
